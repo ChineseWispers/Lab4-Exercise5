@@ -8,21 +8,32 @@ let news = [
   content: "Residents should prepare..." }
   ];
 
-  function addCard(data) {
-    
-    arrayOfNews = Array.from(document.getElementsByClassName("card"))
-    arrayOfNews.forEach(news => news.remove())
+function addCard(data) {
+  
+  arrayOfNews = Array.from(document.getElementsByClassName("card"))
+  arrayOfNews.forEach(news => news.remove())
 
-    data.forEach(element => {
+  data.forEach(element => {
 
-      const template = document.getElementById("card-template").content.cloneNode(true);
+    const template = document.getElementById("card-template").content.cloneNode(true);
 
-      let objKeys = Object.keys(element)
-      template.querySelector('.card-title').innerText = element[objKeys[1]];
-      template.querySelector('.card-text').innerText = element[objKeys[2]];
+    let objKeys = Object.keys(element)
+    template.querySelector('.card-title').innerText = element[objKeys[1]];
+    template.querySelector('.card-text').innerText = element[objKeys[2]];
 
-      document.querySelector('#card-list').appendChild(template);
-    })
-  }
-  addCard(news);
-  setInterval(addCard, 5000, news);
+    document.querySelector('#card-list').appendChild(template);
+  })
+}
+addCard(news);
+setInterval(addCard, 5000, news);
+
+function addNewsToArray() {
+  lastIdNumber = news[news.length - 1].id
+  news.push({
+    id: lastIdNumber + 1, title: document.getElementById("title").value,
+    content: document.getElementById("content").value
+  })
+  news.shift()
+  document.getElementById("title").value = "";
+  document.getElementById("content").value = "";
+}
