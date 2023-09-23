@@ -33,7 +33,6 @@ function addNewsToArray() {
     id: lastIdNumber + 1, title: document.getElementById("title").value,
     content: document.getElementById("content").value
   })
-  news.shift()
   document.getElementById("title").value = "";
   document.getElementById("content").value = "";
 }
