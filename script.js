@@ -10,7 +10,7 @@ let news = [
 
 function addCard(data) {
   
-  arrayOfNews = Array.from(document.getElementsByClassName("card"))
+  arrayOfNews = Array.from(document.getElementsByClassName("col"))
   arrayOfNews.forEach(news => news.remove())
 
   data.forEach(element => {
@@ -21,7 +21,7 @@ function addCard(data) {
     template.querySelector('.card-title').innerText = element[objKeys[1]];
     template.querySelector('.card-text').innerText = element[objKeys[2]];
 
-    document.querySelector('#card-list').appendChild(template);
+    document.querySelector('.container').appendChild(template);
   })
 }
 addCard(news);
